@@ -1,5 +1,5 @@
 const http = require('http');
-const { faker } = require('@faker-js/faker');
+const faker = require('faker');
 const Koa = require('koa');
 const Router = require('@koa/router');
 const koaBody = require('koa-body');

@@ -12,18 +12,15 @@
   "license": "ISC",
   "dependencies": {
     "@koa/router": "^10.0.0",
+    "faker": "^5.5.3",
     "http-event-stream": "^0.2.0",
     "koa": "^2.13.1",
     "koa-body": "^4.2.0",
     "koa-combine-routers": "^4.0.2",
     "koa-static": "^5.0.0",
-    "nodemon": "^2.0.15",
-    "@faker-js/faker": "^6.0.0-beta.0"
+    "nodemon": "^2.0.15"
   },
   "engines": {
     "node": "v16.13.1"
-  },
-  "devDependencies": {
-    "@faker-js/faker": "^6.0.0-beta.0"
   }
 }
