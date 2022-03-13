@@ -28,7 +28,7 @@ app.use(async (ctx, next) => {
     if (!origin) {
         return await next();
     }
-    const headers = { 'Access-Control-Allow-Origin': '*', };
+    const headers = { 'Access-Control-Allow-Origin': '*' };
     if (ctx.request.method !== 'OPTIONS') {
         ctx.response.set({...headers});
         try {
