@@ -16,7 +16,7 @@ const interval = setInterval(() => {
     }
     console.log(newMessage);
     messages.push(newMessage);
-}, 5000);
+}, 60000);
 
 // Server part
 const app = new Koa();
