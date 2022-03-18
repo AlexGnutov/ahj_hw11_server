@@ -1,22 +1,25 @@
 const http = require('http');
-const faker = require('faker');
+const { faker } = require('@faker-js/faker');
 const Koa = require('koa');
 const Router = require('@koa/router');
 const koaBody = require('koa-body');
 
-// Messages creation every 20 with probability close to 0.5
-const messages = [];
-const interval = setInterval(() => {
-    const newMessage = {
-        id: faker.datatype.uuid(),
-        from: faker.internet.email(),
-        subject: faker.lorem.sentence(),
-        body: faker.lorem.paragraph(),
-        received: Date.now(),
-    }
-    console.log(newMessage);
-    messages.push(newMessage);
-}, 10000);
+// Creates from 1 to 4 new messages on request
+function getMessages() {
+    const messages = [];
+    const number = Math.floor(Math.random() * 4 + 1);
+    Array(number).fill(1).forEach(() => {
+        const newMessage = {
+            id: faker.datatype.uuid(),
+            from: faker.internet.email(),
+            subject: faker.lorem.sentence(),
+            body: faker.lorem.paragraph(),
+            received: Date.now(),
+        };
+        messages.push(newMessage);
+    });
+    return messages;
+}
 
 // Server part
 const app = new Koa();
@@ -67,7 +70,7 @@ router.get('/messages/unread', async (ctx, next) => {
     ctx.response.body = JSON.stringify({
         status: "ok",
         timestamp: Date.now(),
-        messages,
+        messages: getMessages(),
     });
 });
 
